@@ -1,0 +1,24 @@
+/* Keep prose and the visible, commented code readable on a report page. */
+body { color: #243447; }
+/* Let long code paths wrap instead of hiding the end of the line. */
+pre.sourceCode { white-space: pre-wrap; overflow-wrap: anywhere; }
+/* Keep quality tables readable without making the surrounding prose smaller. */
+.table { font-size: 0.93rem; }
+/* Group the three meaningful filters without decorative dashboard panels. */
+.demand-filters { display: flex; flex-wrap: wrap; gap: 1rem; margin: 1rem 0; }
+/* Pandoc wraps adjacent raw-HTML labels in a paragraph; keep that wrapper in the same row layout. */
+.demand-filters > p { display: flex; flex-wrap: wrap; gap: 1rem; margin: 0; }
+/* Give each filter a visible label above its select control. */
+.demand-filters label { display: grid; gap: 0.25rem; font-weight: 600; }
+/* Use large native controls that support the keyboard and touch. */
+.demand-filters select { padding: 0.4rem 0.7rem; border: 1px solid #64748b; border-radius: 3px; background: white; color: #243447; }
+/* Show all scatterplot axes and labels on narrow screens without distortion. */
+#demand-explorer svg { display: block; width: 100%; height: auto; background: #fff; }
+/* Keep a point's details visible when selected or focused. */
+#demand-detail { min-height: 2.8em; margin: 0.6rem 0; }
+/* Make keyboard focus on a plotted day distinguishable from its season colour. */
+#demand-explorer circle:focus { stroke: #111827; stroke-width: 3; outline: none; }
+/* Place the four season labels near the graph using the same scientific palette. */
+.demand-legend { display: flex; flex-wrap: wrap; gap: 1.1rem; font-size: 0.9rem; }
+/* Create a colour swatch without relying on colour alone: every swatch has a season name. */
+.demand-legend span::before { content: ""; display: inline-block; width: 0.8em; height: 0.8em; margin-right: 0.35em; background: var(--season-colour); border-radius: 50%; }
