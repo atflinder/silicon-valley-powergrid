@@ -55,6 +55,16 @@
   // A cached/local iframe can finish before its parent deferred script executes.
   if (county.contentDocument?.readyState === 'complete') sizeCounty();
 
+  // Let the zoning usage graph and controls participate in the normal page scroll.
+  const zoning = document.getElementById('zoning-frame');
+  zoning.addEventListener('load', () => {
+    const doc = zoning.contentDocument;
+    if (!doc) return;
+    const resize = () => { zoning.style.height = `${Math.ceil(doc.body.scrollHeight) + 8}px`; };
+    new ResizeObserver(resize).observe(doc.body);
+    resize();
+  });
+
   // Reuse proper tab state for mouse activation and left/right keyboard selection.
   const tabs = [...document.querySelectorAll('.map-tabs [role="tab"]')];
   function selectMap(tab, immediate = false) {
